@@ -4,7 +4,7 @@ let messages: any = [];
 
 const socketsIO = new socket.Server({
   cors: {
-    origin: "http://localhost:8080",
+    origin: "*",
     credentials: true,
   },
 
