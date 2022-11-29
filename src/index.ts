@@ -1,11 +1,16 @@
-import socket from "socket.io";
+import socketio from "socket.io";
+import { createServer } from "http";
+
+const socket = createServer();
 
 let messages: any = [];
 
-const socketsIO = new socket.Server({
+const socketsIO = new socketio.Server(socket, {
   cors: {
     origin: "*",
     credentials: true,
+    allowedHeaders: ["my-custom-header"],
+    methods: ["GET", "POST"],
   },
 
   allowEIO3: true,
