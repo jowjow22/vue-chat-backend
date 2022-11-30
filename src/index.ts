@@ -31,6 +31,6 @@ socketsIO.on("connection", (client: any) => {
   });
 });
 
-const port = Number(process.env.PORT) || 3000;
+const port = 3000;
 socketsIO.listen(port);
 console.log("listening on port ", port);
