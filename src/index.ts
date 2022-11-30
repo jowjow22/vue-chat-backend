@@ -8,7 +8,9 @@ let messages: any = [];
 const socketsIO = new socketio.Server(httpServer, {
   cors: {
     origin: "*",
+    methods: ["GET", "POST"],
   },
+  allowEIO3: true,
 });
 
 socketsIO.on("connection", (client: any) => {
