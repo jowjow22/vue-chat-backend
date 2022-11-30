@@ -1,17 +1,15 @@
 import socketio from "socket.io";
 import { createServer } from "http";
 
-const socket = createServer();
+const httpServer = createServer();
 
 let messages: any = [];
 
-const socketsIO = new socketio.Server(socket, {
+const socketsIO = new socketio.Server(httpServer, {
   cors: {
     origin: "*",
-    allowedHeaders: ["authorization"],
-    credentials: true,
+    credentials: false,
   },
-  allowEIO3: true,
 });
 
 socketsIO.on("connection", (client: any) => {
@@ -32,6 +30,6 @@ socketsIO.on("connection", (client: any) => {
   });
 });
 
-const port = 8000;
+const port = Number(process.env.PORT) || 3000;
 socketsIO.listen(port);
 console.log("listening on port ", port);
