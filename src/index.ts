@@ -8,7 +8,6 @@ let messages: any = [];
 const socketsIO = new socketio.Server(httpServer, {
   cors: {
     origin: "*",
-    credentials: false,
   },
 });
 
