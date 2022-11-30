@@ -7,17 +7,15 @@ let messages: any = [];
 
 const socketsIO = new socketio.Server(socket, {
   cors: {
-    origin: "*",
     credentials: true,
-    allowedHeaders: ["my-custom-header"],
+    origin: "https://whimsical-travesseiro-05a4dc.netlify.app/",
     methods: ["GET", "POST"],
   },
-
   allowEIO3: true,
 });
 
 socketsIO.on("connection", (client: any) => {
-  console.log("made socket connection", client.id);
+  console.log("made socket   connection", client.id);
 
   messages.map((message: any) => {
     client.emit("message", message);
