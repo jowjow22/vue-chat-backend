@@ -8,7 +8,7 @@ let messages: any = [];
 const socketsIO = new socketio.Server(socket, {
   cors: {
     credentials: true,
-    origin: "https://whimsical-travesseiro-05a4dc.netlify.app/",
+    origin: "https://whimsical-travesseiro-05a4dc.netlify.app",
     methods: ["GET", "POST"],
   },
   allowEIO3: true,
