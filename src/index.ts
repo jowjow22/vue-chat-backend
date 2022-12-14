@@ -1,9 +1,17 @@
 import socketio from "socket.io";
 import { createServer } from "http";
+import express from "express";
+import cors from "cors";
 
-const httpServer = createServer();
+const app = express();
+app.use(cors());
+const httpServer = createServer(app);
 
 let messages: any = [];
+
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
 
 const socketsIO = new socketio.Server(httpServer, {
   cors: {
