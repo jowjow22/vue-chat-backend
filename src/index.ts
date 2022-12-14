@@ -40,5 +40,6 @@ socketsIO.on("connection", (client: any) => {
 });
 
 const port = 3000;
-socketsIO.listen(port);
-console.log("listening on port ", port);
+httpServer.listen(port, () => {
+  console.log("listening on port ", port);
+});
