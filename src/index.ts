@@ -5,12 +5,15 @@ import cors from "cors";
 
 const app = express();
 app.use(cors());
+app.use(express.json());
 const httpServer = createServer(app);
 
 let messages: any = [];
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.json({
+    message: "Hello World",
+  });
 });
 
 const socketsIO = new socketio.Server(httpServer, {
