@@ -9,10 +9,13 @@ const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
+app.use(express_1.default.json());
 const httpServer = (0, http_1.createServer)(app);
 let messages = [];
 app.get("/", (req, res) => {
-    res.send("Hello World!");
+    res.json({
+        message: "Hello World",
+    });
 });
 const socketsIO = new socket_io_1.default.Server(httpServer, {
     cors: {
@@ -36,7 +39,7 @@ socketsIO.on("connection", (client) => {
         socketsIO.emit("message", data);
     });
 });
-const port = 3000;
+const port = process.env.PORT || 3000;
 httpServer.listen(port, () => {
     console.log("listening on port ", port);
 });
